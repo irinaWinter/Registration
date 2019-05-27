@@ -7,14 +7,15 @@ function User(firstName, lastName, regDate) {
 function UserList() {
 	this.type = 'список пользователей';
 	this.users = [];
-	this.add = function() {
-		this.users.push(this.firstName + ', ' + this.regDate)
+	this.add = function(User) {
+		return this.users.push(User.firstName + ', ' + User.regDate)
 	};
 	this.getAllUsers = function() {
 		return this.users;
 	}
 }
-var userList = new UserList;
+
+var userList = new UserList();
 function registration() {
 	var name = prompt('Введите имя и фамилию', '');
 	if (name !== null) {
@@ -52,14 +53,13 @@ function registration() {
 			}	
 		};
 		var regDate = day() + '.' + month() + '.' + year + ' ' + hours() + ':' + minutes();
-		var user = new User(firstName, lastName, regDate);
-		var users = new UserList();
-		users.add(user);
-		console.log(user);
-		console.log(users);
+		var myUser = new User(firstName, lastName, regDate);
+		userList.add(myUser);
+		console.log(myUser);
+		console.log(userList);
+		registration();
 	} else {
-		console.log(users.getAllUsers());
-
+		console.log(userList.getAllUsers());
 	}
 }
 registration();
