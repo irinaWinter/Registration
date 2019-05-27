@@ -8,17 +8,16 @@ function UserList() {
 	this.type = 'список пользователей';
 	this.users = [];
 	this.add = function(User) {
-		return this.users.push(User.firstName + ', ' + User.regDate)
+		return this.users.push(User.firstName + ' ' + User.lastName + ', ' + User.regDate)
 	};
 	this.getAllUsers = function() {
 		return this.users;
 	}
 }
 
-var userList = new UserList();
 function registration() {
 	var name = prompt('Введите имя и фамилию', '');
-	if (name !== null) {
+	if (name !== null && name!== '') {
 		var arr = name.split(' ');
 		var firstName = arr[0];
 		var lastName = arr[1];
@@ -32,7 +31,7 @@ function registration() {
 		};	
 		var month = function() {
 			if (date.getMonth() + 1 < 10) {
-				return '0' + date.getMonth() + 1;
+				return '0' + Number((date.getMonth() + 1), 10);
 			} else {
 				return date.getMonth() + 1;
 			}	
@@ -55,11 +54,14 @@ function registration() {
 		var regDate = day() + '.' + month() + '.' + year + ' ' + hours() + ':' + minutes();
 		var myUser = new User(firstName, lastName, regDate);
 		userList.add(myUser);
-		console.log(myUser);
-		console.log(userList);
 		registration();
 	} else {
-		console.log(userList.getAllUsers());
+		var arr = userList.getAllUsers();
+		arr.forEach(function(item) {
+			console.log(item);
+		});
 	}
 }
+
+var userList = new UserList();
 registration();
