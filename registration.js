@@ -16,79 +16,90 @@ function UserList() {
 	}
 }
 
+// Раскомментировать !!!!!
+
+// function registration() {
+// 	var name = prompt('Введите имя и фамилию', '');
 
 
-function registration() {
-	var name = prompt('Введите имя и фамилию', '');
-	var arr = userList.getAllUsers();
-	if (name !== null && name!== '') {
 
-		var arr = name.split(' ');
-		var firstName = arr[0];
-		var lastName = arr[1];
-		var date = new Date();
-		var day = function() {
-			if (date.getDate() < 10) {
-				return '0' + date.getDate();
-			} else {
-				return date.getDate();
-			}
-		};	
-		var month = function() {
-			if (date.getMonth() + 1 < 10) {
-				return '0' + Number((date.getMonth() + 1), 10);
-			} else {
-				return date.getMonth() + 1;
-			}	
-		};
-		var year = date.getFullYear();
-		var hours = function() {
-			if (date.getHours() < 10){
-				return '0' + date.getHours();
-			} else {
-				return date.getHours();
-			}	
-		};
-		var minutes = function() {
-			if (date.getMinutes() < 10){
-				return '0' + date.getMinutes();
-			} else {
-				return date.getMinutes();
-			}	
-		};
-		var regDate = day() + '.' + month() + '.' + year + ' ' + hours() + ':' + minutes();
-		var myUser = new User(firstName, lastName, regDate);
+// 	var allUsers = userList.getAllUsers();
+// 	if (name !== null && name!== '') {
+// 		var dataEntered = name.split(' ');
+// 		var firstName = dataEntered[0];
+// 		var lastName = dataEntered[1];
+// 		var date = new Date();
+// 		var day = function() {
+// 			if (date.getDate() < 10) {
+// 				return '0' + date.getDate();
+// 			} else {
+// 				return date.getDate();
+// 			}
+// 		};	
+// 		var month = function() {
+// 			if (date.getMonth() + 1 < 10) {
+// 				return '0' + Number((date.getMonth() + 1), 10);
+// 			} else {
+// 				return date.getMonth() + 1;
+// 			}	
+// 		};
+// 		var year = date.getFullYear();
+// 		var hours = function() {
+// 			if (date.getHours() < 10){
+// 				return '0' + date.getHours();
+// 			} else {
+// 				return date.getHours();
+// 			}	
+// 		};
+// 		var minutes = function() {
+// 			if (date.getMinutes() < 10){
+// 				return '0' + date.getMinutes();
+// 			} else {
+// 				return date.getMinutes();
+// 			}	
+// 		};
+// 		var regDate = day() + '.' + month() + '.' + year + ' ' + hours() + ':' + minutes();
+// 		var myUser = new User(firstName, lastName, regDate);
 
-		// Проверка на наличие регистрации
-		// var matches = 0;
-		// if (arr.length > 0) {
-		// 	for (var i = 0; i < arr.length; i++) {
-		// 		if (firstName == arr[i].firstName && lastName == arr[i].users.lastName) {
-		// 			matches++;
-		// 			console.log(arr[i].firstName);
-		// 		}
-		// 	}
-		// }	
-		// if (matches > 0) {
-		// 	alert('Пользователь с такими данными уже зарегистрирован! Введите другие данные.');
-		// } else {
-		// 	userList.add(myUser);
-		// }
-		// // userList.add(myUser);
-		// // console.log(userList);
-		// // console.log(myUser);
-		// registration();
-		// console.log(userList);
-		
-		
+// 		// Проверка на наличие регистрации
+// 		var matches = 0;
+// 		if (allUsers.length > 0) {
+// 			for (var i = 0; i < allUsers.length; i++) {
+// 				if (firstName == allUsers[i].firstName && lastName == allUsers[i].lastName) {
+// 					matches++;
+// 				}
+// 			}
+// 		}
 
+// 		if (matches > 0) {
+// 			alert('Пользователь с такими данными уже зарегистрирован! Введите другие данные.');
+// 		} else {
+// 			userList.add(myUser);
+// 		}
+// 		registration();
+
+// 	} else {
+// 		allUsers.forEach(function(item) {
+// 			console.log(item.firstName + ' ' + item.lastName + ', ' + item.regDate);
+// 		});
+// 	}
+// }
+
+// var userList = new UserList();
+// registration();
+
+
+function getFullName() {
+	var n = prompt('Введите имя и фамилию', '');
+	var dataEntered = n.split(' ');
+	var firstName = dataEntered[0];
+	var lastName = dataEntered[1];	
+	if (+firstName == false && +lastName == false) {
+		alert('Все верно');
 	} else {
-		
-		arr.forEach(function(item) {
-			console.log(item.firstName + ' ' + item.lastName + ', ' + item.regDate);
-		});
+		alert('Введите данные в корректной форме');
+		getFullName();
 	}
 }
 
-var userList = new UserList();
-registration();
+getFullName();
