@@ -33,6 +33,9 @@ function registration() {
 		// Проверяем на наличие чисел
 		if ( isNaN(+dataEntered[0]) && isNaN(+dataEntered[1]) ) {
 
+			// Проверяем на наличие чисел в слове 
+
+
 			var firstName = dataEntered[0];
 			var lastName = dataEntered[1];
 			var date = new Date();
@@ -90,6 +93,7 @@ function registration() {
 				registration();
 			} else {
 				userList.add(myUser);
+				registration();
 			}
 
 		} else {
@@ -97,11 +101,12 @@ function registration() {
 			registration();
 		} 
 	} else {
-		
+		userList.users.forEach(function(item) {
+			console.log(item.firstName + ' ' + item.lastName + ', ' + item.regDate);
+		});
 	}
+}	
 
-}
 
 var userList = new UserList();
 registration();
-console.log(dataEntered);
